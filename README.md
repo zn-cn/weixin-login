@@ -142,9 +142,9 @@
 ### docker-compose 说明
 
 + 环境变量
-  APP_ADDR=:6458 项目启动地址
-  WEIXIN_APPID=WEIXIN_APPID 微信 appid
-  WEIXIN_APPSECRET=WEIXIN_APPSECRET 微信 appsecret
+  + 环境变量 APP_ADDR=:6458 项目启动地址
+  + WEIXIN_APPID=WEIXIN_APPID 微信 appid
+  + WEIXIN_APPSECRET=WEIXIN_APPSECRET 微信 appsecret
 
 ### nginx 说明
 
