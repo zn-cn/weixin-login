@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+    app:
+      image: <your address>/weixin-login:1.0.0
+      volumes:
+        - /etc/localtime:/etc/localtime:ro
+        - ./src:/app/src
+        - ./log:/app/log
+      ports:
+        - "6536:6458"
+      environment:
+        - TZ=Asia/Shanghai
+        - APP_ADDR=:6458
+        - WEIXIN_APPID=WEIXIN_APPID
+        - WEIXIN_APPSECRET=WEIXIN_APPSECRET
+      container_name: weixin-login_app
+      entrypoint: ["go", "run", "src/main.go"]

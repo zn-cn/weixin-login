@@ -1,0 +1,15 @@
+{
+  "name": "weixin-login",
+  "version": "1.0.0",
+  "description": "the api doc of weixin-login",
+  "title": "weixin-login apidoc",
+  "url": "https:/<your weixin hostname>/weixin-login",
+  "header": {
+    "title": "header",
+    "filename": "header.md"
+  },
+  "template": {
+    "withCompare": true,
+    "withGenerator": true
+  }
+}
