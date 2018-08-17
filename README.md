@@ -53,7 +53,7 @@
 
 + API 文档
 
-  使用 apidoc 从代码生成可视化 API 文档，文档链接: https://api.bingyan.net/weixin-login/
+  使用 apidoc 从代码生成可视化 API 文档，文档链接: https://<your api hostname>/weixin-login/
 
   包含:
 
