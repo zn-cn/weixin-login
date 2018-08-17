@@ -1,7 +1,7 @@
 import { GET } from '@/api/ajax';
 import { SET_REDIRECT_URI, DECREMENT } from '@/common/mutation-types';
 import { GET_REDIRECT_URI } from '@/common/url';
-
+import { set as setLocalStorage } from '@/util/localStorage';
 // initial state
 const state = {
   countDown: 5,
@@ -28,13 +28,13 @@ const actions = {
         const data = response.data;
         const redirectURI = data.data.redirect_uri;
         commit(SET_REDIRECT_URI, redirectURI);
-        localStorage.setItem('status', '2');
+        setLocalStorage('status', '2');
       },
       errFunc: (error) => {
         console.log(error);
         const userURL = process.env.NODE_ENV === 'production' ? '/user' : '/#/user';
         commit(SET_REDIRECT_URI, userURL);
-        localStorage.setItem('status', '1');
+        setLocalStorage('status', '1');
       },
     });
   },

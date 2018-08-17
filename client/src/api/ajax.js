@@ -20,7 +20,7 @@ const instance = axios.create({
 // });
 
 function GET({ url, params, func, errFunc } = {}) {
-  instance.get(url, params)
+  return instance.get(url, params)
     .then((response) => {
       func(response);
     })
@@ -29,7 +29,7 @@ function GET({ url, params, func, errFunc } = {}) {
     });
 }
 function DELETE({ url, params, func, errFunc } = {}) {
-  instance.delete(url, params)
+  return instance.delete(url, params)
     .then((response) => {
       func(response);
     })
@@ -38,7 +38,7 @@ function DELETE({ url, params, func, errFunc } = {}) {
     });
 }
 function POST({ url, data, func, errFunc } = {}) {
-  instance.post(url, data)
+  return instance.post(url, data)
     .then((response) => {
       func(response);
     })
@@ -48,7 +48,7 @@ function POST({ url, data, func, errFunc } = {}) {
 }
 
 function PUT({ url, data, func, errFunc } = {}) {
-  instance.post(url, data)
+  return instance.post(url, data)
     .then((response) => {
       func(response);
     })
