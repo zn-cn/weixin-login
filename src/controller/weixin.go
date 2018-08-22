@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"model"
 	"net/http"
+	"strconv"
 	"time"
 	"util"
 	"util/log"
@@ -139,7 +140,7 @@ func SetUserInfoByCode(c echo.Context) error {
 		}
 		if key == "sex" {
 			if v, ok := value.(float64); ok {
-				cookieValue = string(int(v))
+				cookieValue = strconv.FormatFloat(v, 'f', -1, 32)
 			}
 		}
 		if cookieValue != "" {

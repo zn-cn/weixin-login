@@ -3,19 +3,19 @@
 ## 基本信息：
 
 + 入口
-  + 生产：`https://<your weixin hostname>/weixin-login/`
-  + 接口文档：`https://<your api hostname>/weixin-login/`
+  + 生产：`https://weixin.bingyan-tech.hustonline.net/weixin-login/`
+  + 接口文档：`https://api.bingyan.net/weixin-login/`
 + 域名
-  + 生产：`<your hostname>`
+  + 生产：`weixin-login.hustonline.net`
 + 镜像
-  + 生产：`<your address>/weixin-login:1.0.0`
+  + 生产：`registry.cn-hangzhou.aliyuncs.com/bingyan/weixin-login:1.0.0`
 + 开发环境
   + 语言：`golang 1.10`
   + 框架：`echo`
 + 项目部署位置
-  + server：`<your server: your path>`
+  + server：`阿里云-53 /mnt/var/www/tofar/weixin-login`
 + 开发人员
-  + 后台：<your name>
+  + 后台：赵楠
 
 ## 项目介绍
 
@@ -24,8 +24,6 @@
 微信登录公共服务
 
 #### 流程：
-
-> 注：已经使用 vue 写了一个测试用的前端在 client 目录
 
 + 向公共服务发送请求获取 redirect_uri
 
@@ -53,7 +51,7 @@
 
 + API 文档
 
-  使用 apidoc 从代码生成可视化 API 文档，文档链接: `https://<your api hostname>/weixin-login/`
+  使用 apidoc 从代码生成可视化 API 文档，文档链接: https://api.bingyan.net/weixin-login/
 
   包含:
 
@@ -107,9 +105,7 @@
 
 ### 文件简介
 
-+ data
-
-  数据，如：<your db name>-dump-<date>
++ client 前端文件
 
 + deploy 项目部署
 
@@ -119,7 +115,6 @@
 + docs 文档
 
   + API
-  + db
   + iteration 迭代文档
   + record 记录
 
@@ -128,8 +123,6 @@
   + apidoc
 
     可视化 API 文档
-
-+ client 前端测试示例
 
 + src 源码
 
@@ -142,20 +135,20 @@
 ### docker-compose 说明
 
 + 环境变量
-  APP_ADDR=:6458 项目启动地址
-  WEIXIN_APPID=WEIXIN_APPID 微信 appid
-  WEIXIN_APPSECRET=WEIXIN_APPSECRET 微信 appsecret
+  + 环境变量 APP_ADDR=:6458 项目启动地址
+  + WEIXIN_APPID=WEIXIN_APPID 微信 appid
+  + WEIXIN_APPSECRET=WEIXIN_APPSECRET 微信 appsecret
 
 ### nginx 说明
 
-概述：通过公有的微信域名作为对外开放的入口，所以需要在  `https://<your weixin hostname>` 域名下添加相关跳转配置
+概述：通过公有的微信域名作为对外开放的入口，所以需要在  `https://weixin.bingyan-tech.hustonline.net` 域名下添加相关跳转配置
 
 微信域名下配置如下：
 
 ```
     location ~ /weixin-login/(.*)? {
-        proxy_set_header Host <your hostname>;
-        proxy_pass https://<your ip>/$1$is_args$args;
+        proxy_set_header Host weixin-login.hustonline.net;
+        proxy_pass https://120.78.203.153/$1$is_args$args;
         proxy_set_header X-Real-IP $remote_addr;
     }
 ```
