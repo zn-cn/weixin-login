@@ -2,7 +2,7 @@ version: "3"
 
 services:
     app:
-      image: registry.cn-hangzhou.aliyuncs.com/bingyan/weixin-login:1.0.0
+      image: <your address>/weixin-login:1.0.0
       volumes:
         - /etc/localtime:/etc/localtime:ro
         - ./src:/app/src
@@ -12,12 +12,7 @@ services:
       environment:
         - TZ=Asia/Shanghai
         - APP_ADDR=:6458
-        - WEIXIN_APPID=wxdb6d54fc376bf014
-        - WEIXIN_APPSECRET=54c8841551e1b038c3e06f7baacecf9a
-      logging:
-        driver: gelf
-        options:
-          gelf-address: "udp://202.114.18.44:12201"
-          tag: "weixin-login"
+        - WEIXIN_APPID=WEIXIN_APPID
+        - WEIXIN_APPSECRET=WEIXIN_APPSECRET
       container_name: weixin-login_app
       entrypoint: ["go", "run", "src/main.go"]
