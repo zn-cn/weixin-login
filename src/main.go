@@ -29,9 +29,6 @@ func main() {
 	weixin := v1.Group("/weixin")
 	view.InitWeixinView(weixin)
 
-	user := v1.Group("/user")
-	view.InitUserView(user)
-
 	// 启动
 	e.Logger.Fatal(e.Start(config.Conf.AppInfo.Addr))
 }

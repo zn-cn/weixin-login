@@ -17,3 +17,7 @@ func BindGetJSONData(url string, param req.Param, body interface{}) error {
 	}
 	return nil
 }
+
+func ReqPOST(url string, body interface{}) (*req.Resp, error) {
+	return req.Post(url, req.BodyJSON(body))
+}

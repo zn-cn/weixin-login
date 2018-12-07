@@ -8,15 +8,23 @@
     "LogFileName": "app"
   },
   "Wechat": {
-    "AppID": "wxdb6d54fc376bf014",
-    "AppSecret": "54c8841551e1b038c3e06f7baacecf9a",
-    "RedirectURI": "https://weixin.bingyan-tech.hustonline.net/weixin-login/api/v1/weixin/code",
+    "AppID": "<appid>",
+    "AppSecret": "<app secret>",
+    "RedirectURI": "https://<weixin host>/weixin-login/api/v1/weixin/code",
     "ResponseType": "snsapi_userinfo"
   },
   "URL": {
     "CodeURL": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=%s&redirect_uri=%s&response_type=code&scope=%s&state=%s#wechat_redirect",
     "TokenURL": "https://api.weixin.qq.com/sns/oauth2/access_token",
     "RefreshURL": "https://api.weixin.qq.com/sns/oauth2/refresh_token",
-    "UserInfoURL": "https://api.weixin.qq.com/sns/userinfo"
+    "UserInfoURL": "https://api.weixin.qq.com/sns/userinfo",
+    "WhiteList": [
+      "<host>",
+      "<another host>"
+    ]
+  },
+  "Redis": {
+    "Host": "redis",
+    "Port": "6379"
   }
 }

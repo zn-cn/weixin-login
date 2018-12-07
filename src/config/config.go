@@ -8,6 +8,7 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"strings"
 )
 
 // Config 配置
@@ -16,6 +17,7 @@ type Config struct {
 	Log     logConf `json:"Log"`
 	Wechat  wechat  `json:"Wechat"`
 	URL     url     `json:"URL"`
+	Redis   redis   `json:"Redis"`
 }
 
 type appInfo struct {
@@ -36,10 +38,17 @@ type wechat struct {
 }
 
 type url struct {
-	CodeURL     string `json:"CodeURL"`
-	TokenURL    string `json:"TokenURL"`
-	RefreshURL  string `json:"RefreshURL"`
-	UserInfoURL string `json:"UserInfoURL"`
+	CodeURL     string   `json:"CodeURL"`
+	TokenURL    string   `json:"TokenURL"`
+	RefreshURL  string   `json:"RefreshURL"`
+	UserInfoURL string   `json:"UserInfoURL"`
+	WhiteList   []string `json:"WhiteList"`
+}
+
+type redis struct {
+	Host string `json:"Host"`
+	Port string `json:"Port"`
+	PW   string `json:"PW"`
 }
 
 // Conf 配置
@@ -93,5 +102,9 @@ func readEnv() {
 	if v, ok := os.LookupEnv("APP_ADDR"); ok {
 		Conf.AppInfo.Addr = v
 	}
+	if v, ok := os.LookupEnv("WhiteList"); ok {
+		Conf.URL.WhiteList = strings.Split(v, ",")
+	}
+
 	log.Println("over read env")
 }

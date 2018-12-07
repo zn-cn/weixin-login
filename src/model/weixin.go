@@ -5,6 +5,7 @@ import (
 	"util/log"
 
 	"github.com/imroc/req"
+	"github.com/json-iterator/go"
 	"github.com/sirupsen/logrus"
 )
 
@@ -69,6 +70,22 @@ func GetUserInfo(accessToken, openid string) (UserInfo, error) {
 		return UserInfo{}, err
 	}
 	return userInfo, nil
+}
+
+func SetRedisURL(key, value string) error {
+	ctrl := NewRedisDBCntlr()
+	defer ctrl.Close()
+	_, err := ctrl.SETEX(key, 10*60, value)
+	return err
+}
+
+func GetRedisURL(key string) (map[string]string, error) {
+	ctrl := NewRedisDBCntlr()
+	defer ctrl.Close()
+	value, _ := ctrl.GET(key)
+	res := map[string]string{}
+	err := jsoniter.UnmarshalFromString(value, &res)
+	return res, err
 }
 
 func writeWeixinLog(funcName, errMsg string, err error) {
