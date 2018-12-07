@@ -150,13 +150,20 @@
             "optional": false,
             "field": "index_url",
             "description": "<p>首页URL，后台跳转回首页的URL</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "cb_api",
+            "description": "<p>回调API接口：即为之后后台拿到用户信息之后后台会调用此接口将API发送过去，限制<another host>和<host>的子域名, method:POST</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Request-Example:",
-          "content": "{\n  \"index_url\": \"https://weixin.bingyan-tech.hustonline.net/gradmovie/\",\n}",
+          "content": "{\n  \"index_url\": \"https://<weixin host>/gradmovie/\",\n  \"cb_api\": \"https://test.<host>/api/v1/userInfo\"\n}",
           "type": "query"
         }
       ]
